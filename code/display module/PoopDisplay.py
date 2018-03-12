@@ -52,6 +52,15 @@ class PoopDisplay:
             self.sendCMD( 'sensor-update  "pledge_count"  '  + str(pledge_count)  )
             self.pledge_count = pledge_count
 
+    # pass latest totals to the display
+    # ARGUMENTS:
+    #   donor_name
+    #   donor_amount (int - ££)
+    def credit (self, donor_name, donor_amount):
+            self.sendCMD( 'sensor-update  "donor_name"   '  + str(donor_name)   )
+            self.sendCMD( 'sensor-update  "donor_amount" '  + str(donor_amount) )
+            self.sendCMD( 'broadcast  "credit"' )
+
     # simulates a set of donations coming in from a number of donors at a given frequency
     # default setting is £10 donations, 10 donors, once per second
     def test (self, donation_size=None, number_of_donors=None, frequency=None):

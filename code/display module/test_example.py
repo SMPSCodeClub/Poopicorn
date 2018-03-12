@@ -8,8 +8,10 @@ display.initialise()      # initialise numerals & sprites
 display.test(2,100,5)   # simulate a set of donation updates
                         # (£2 received from 100 donors, 5 donations per seond)
 
-totalPledged = 200
-pledgeCount  = 100
+totalPledged = 500
+pledgeCount  = 200
 display.update(totalPledged,pledgeCount)  # update Scratch display
 
+
+display.credit("Ermintrude", 50)          # trigger an on-screen donor mention
 display.jackpot()                         # trigger jackpot animation
