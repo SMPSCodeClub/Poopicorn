@@ -1,0 +1,18 @@
+#Just giving details
+
+APPLICATION_KEY = ''
+JUSTGIVING_URL = ' '
+
+
+#Twitter API Keys
+
+
+
+CONSUMER_KEY = 
+CONSUMER_SECRET = 
+ACCESS_KEY =
+ACCESS_SECRET = 
+
+
+
+
