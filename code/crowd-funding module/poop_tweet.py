@@ -16,7 +16,13 @@ class  PoopTweet():
 		auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 		tweet = tweepy.API(auth)
 
-		tweet.update_status(tweet_text)
+		try:
+
+		    tweet.update_status(tweet_text)
+		except tweepy.TweepError as e:
+                    print(e.api_code)
+                    print(e.reason)
+		    
 
 	def send_tweet_with_media(self,filename,tweet_text=''):
 
