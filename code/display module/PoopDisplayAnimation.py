@@ -58,9 +58,6 @@ class mainThread (threading.Thread):
             if  PoopStatus.Jackpot == 1:
                 trigger_jackpot()
                 PoopStatus.Jackpot = 0
-            if  PoopStatus.DonorCredit == 1:
-                trigger_credit()
-                PoopStatus.DonorCredit = 0
 
 class clientThread (threading.Thread):
     def __init__(self, threadID, connection):
