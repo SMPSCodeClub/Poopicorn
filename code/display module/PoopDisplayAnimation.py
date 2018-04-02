@@ -198,7 +198,7 @@ scoreboard.image = 'scoreboard'
 ### BACKGROUND IMAGES
 background = Actor('bg-001')
 background.pos = 400, 300
-background.costumes = ['bg-001', 'bg-002', 'bg-003', 'bg-004', 'bg-005', 'bg-006']
+background.costumes = ['bg-001', 'bg-002', 'bg-003', 'bg-004', 'bg-005', 'bg-006', 'bg-007']
 background.costume = 0
 background.image = 'bg-001'
 
