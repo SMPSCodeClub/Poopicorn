@@ -12,7 +12,7 @@ class PoopDisplay:
         else:
              self.host = host 
         if port is None:
-            self.port = 42002
+            self.port = 42001
         else:
              self.port = port
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

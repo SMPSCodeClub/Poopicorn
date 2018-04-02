@@ -3,9 +3,12 @@ PoopDisplay class API has been tested as working in Python 3
 
 PYTHON MODULES
 The following Python modules are used by the PoopDisplay class:
-* socket
+* pygame
+* threading
 * time
+* socket
 * sys
+* re
 
 SCRATCH VERSION
 Only works with Scratch 1.4 as it uses the remote sensors protocol:
