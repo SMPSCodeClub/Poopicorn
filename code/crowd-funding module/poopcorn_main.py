@@ -15,6 +15,7 @@ class main():
                 self.time_delay = 60
                 self.tweet_text = ['The latest total is  ','Wow! we have raised ',  'The total so far is ', 'Thankyou to all our donors, we have raised ']
                 self.total_file = 'total_file.txt'
+                self.total_crowfund_url = 'https://www.justgiving.com/crowdfunding/playfulanywhere'
 
         def run_machine(self):
                 current_time = time.time()
@@ -114,9 +115,13 @@ class main():
                                         tweet = poop_tweet.PoopTweet()
 
 
+                                        if latest_donor_name
+
+
                                         
 
-                                        tweet.send_tweet(random.choice(self.tweet_text) + '£' + str(total) +' our latest donation is £' +  str(latest_donor_amount) +  ' donated by ' + latest_donor_name  )
+                                        tweet.send_tweet(random.choice(self.tweet_text) + '£' + str(total) +' our latest donation is £' +  str(latest_donor_amount) +  ' donated by ' + latest_donor_name +
+                                                         ' help us bring more play to Leeds by donating at  '+ self.total_crowfund_url )
 
 
 
