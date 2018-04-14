@@ -24,16 +24,20 @@ class justGiving():
 
                 
                 url = self.url + '/' + endpoint
+
                 
 
+                try:
 
-                request = requests.get(url , headers = self.headers)
+                    request = requests.get(url , headers = self.headers)
+
+                except requests.exceptions.RequestException as e:
+                    print(e)
 
                 if (request.status_code == 200):
 
                         return request
-                else:
-                    return request.status_code
+
 		
 
     
@@ -42,9 +46,16 @@ class justGiving():
         endpoint = ''
         requested_data = self.make_request(endpoint)
 
-        amount_raised = requested_data.json()['amountRaised']
 
-        return amount_raised
+        try:
+            amount_raised = requested_data.json()['amountRaised']
+            return amount_raised
+
+        except AttributeError as e:
+            print(e)
+        
+
+        return -1
 
 
     def get_donor_count(self):
@@ -52,74 +63,71 @@ class justGiving():
     	endpoint = 'pledges'
 
     	requested_data = self.make_request(endpoint)
+
+
     	
+        try:
+    	    donor_count = requested_data.json()['totalCount']
+            return donor_count
 
-    	donor_count = requested_data.json()['totalCount']
+        except AttributeError as e:
+            print(e)
 
-
-    	return donor_count
+    	return -1
 
 
 
     def get_donor_names(self):
 
-        endpoint = 'pledges'
+        endpoint = 'pledges?pageSize=100'
 
         requested_data = self.make_request(endpoint)
         
 
+        try: 
+            pledges = requested_data.json()['pledges']
 
-        pledges = requested_data.json()['pledges']
+            donor_names =[]
 
-        donor_names =[]
-
-        for pledge  in pledges:
-    	    donor_names.append(pledge.get('donationName'))
+            for pledge  in pledges:
+    	        donor_names.append(pledge.get('donationName'))
 
 
 
-        return donor_names
+            return donor_names
+        except AttributeError as e:
+            print(e)
+
+        return -1
+
 
 
 
     def get_donations(self):
 
-        endpoint = 'pledges'
+        endpoint = 'pledges?pageSize=100'
 
         requested_data = self.make_request(endpoint)
 
+        try:
+            pledges = requested_data.json()['pledges']
 
-        pledges = requested_data.json()['pledges']
+            donations = []
 
-        donations = []
+            for pledge in pledges:
 
-        for pledge in pledges:
+        	    donation = []
 
-        	donation = []
+        	    donation.append(pledge.get('donationName'))
+        	    donation.append(pledge.get('donationAmount'))
 
-        	donation.append(pledge.get('donationName'))
-        	donation.append(pledge.get('donationAmount'))
+        	    donations.append(donation)
 
-        	donations.append(donation)
+            return donations
+        except AttributeError as e:
+            print(e)
 
-        return donations
-
-
-
-class  poop_a_tweet():
-
-	def __init__(self):
-
-		pass
-
-	def send_tweet(self,tweet_text):
-
-		#Construct the tweepy object for tweeting
-		auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-		auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-		tweet = tweepy.API(auth)
-
-		tweet.update_status(tweet_text)
+        return -1
 
 
 
